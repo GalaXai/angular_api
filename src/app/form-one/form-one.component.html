@@ -1,0 +1,31 @@
+<div class="form-one-container">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter username"
+        [(ngModel)]="username"
+        name="username">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="onFetchProfiles()">Fetch Profiles</button>
+    </div>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="isLoading">Loading...</div>
+  
+    <div *ngFor="let profile of profiles">
+        <div [ngStyle]="{'background-color': getBackgroundColor(profile.cute_name)}">
+          <!-- Display the game mode as an image with a maximum size -->
+          <p><img [src]="getImageUrl(profile.game_mode)" [style.max-height.px]="28" [style.max-width.px]="28" alt="{{ profile.game_mode }}" /> {{profile.game_mode}} profile</p>
+          <p>Coins: {{ profile.data.purse | number }}</p>
+          <p>Skill Average: {{ profile.data.average_level | number:'1.2-2' }}</p>
+          <!-- Add more details as needed -->
+        </div>
+    </div>      
+  </div>
+  
