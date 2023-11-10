@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+// Import Bootswatch variables first
+@import 'assets/styles/bootswatch/_variables.scss';
+
+// Then import Bootstrap SCSS
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Finally, import the rest of the Bootswatch theme
+@import 'assets/styles/bootswatch/_bootswatch.scss';
+
+// Your custom styles
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
