@@ -1,41 +1,40 @@
 <!-- Conditionally display the form based on isFormTwoVisible$ -->
 <div *ngIf="isFormTwoVisible">
-  <form [formGroup]="accountCreationForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name">
-      </div>
-    
-      <div>
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" formControlName="surname">
-      </div>
-    
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email">
-      </div>
-    
-      <div>
-        <label for="confirmEmail">Confirm Email:</label>
-        <input type="email" id="confirmEmail" formControlName="confirmEmail">
-      </div>
-    
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password">
-      </div>
-    
-      <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" formControlName="confirmPassword">
-      </div>
-    
-      <button type="submit" [disabled]="!accountCreationForm.valid">Create Account</button>
-    </form>
-    
-    <div *ngIf="accountCreationForm.errors?.['mismatch']">
+  <form [formGroup]="accountCreationForm" (ngSubmit)="onSubmit()" class="form-style">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" placeholder="Enter your name" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" formControlName="surname" placeholder="Enter your surname" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="confirmEmail">Confirm Email:</label>
+      <input type="email" id="confirmEmail" formControlName="confirmEmail" placeholder="Confirm your email" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" placeholder="Enter your password" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" class="form-control">
+    </div>
+  
+    <div *ngIf="accountCreationForm.errors?.['mismatch']" class="alert alert-warning">
       Passwords and emails must match.
     </div>
-</div>
     
+    <button type="submit" [disabled]="!accountCreationForm.valid" class="btn btn-primary">Create Account</button>
+  </form>
+</div>

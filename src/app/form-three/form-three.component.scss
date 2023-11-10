@@ -1,0 +1,38 @@
+.suggestion-item {
+    // ... existing styles ...
+    background: #222;
+    border: 1px solid #fff;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    a {
+      text-decoration: none;
+      color: #000;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    button {
+      // Style your button here
+      margin-left: 8px;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #e8e8e838;
+      }
+    }
+  }
+  
+  .item-info {
+    // Style for the item information display area
+    margin-top: 16px;
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 4px;
+  }
+  

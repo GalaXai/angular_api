@@ -1,3 +1,27 @@
 <div *ngIf="isVisible">
-    <p>form-three works!</p>
+<div>
+  <input type="text"
+         [(ngModel)]="searchQuery"
+         (input)="onSearchChange(searchQuery)"
+         placeholder="Search for an item"
+         class="form-control">
+  
+  <!-- Autocomplete suggestions with 'Info' button for each item -->
+  <div *ngFor="let itemName of filteredItemNames" class="suggestion-item">
+    {{ itemName }}
+    <button (click)="displayItemInfo(itemName)" class="btn btn-info">Info</button>
+  </div>
+</div>
+
+<!-- Area to display selected item information -->
+<div *ngIf="selectedItem" class="item-info">
+  <h3>{{ selectedItem.name }}</h3>
+  <p>Buy Price: {{ selectedItem.buyPrice | currency }}</p>
+  <p>Sell Price: {{ selectedItem.sellPrice | currency }}</p>
+  <!-- Display other details as needed -->
+</div>
+
+<!-- Debug Alert Button -->
+<!-- <button (click)="triggerDebugAlert()" class="btn btn-secondary">Debug Alert</button> -->
+
 </div>
