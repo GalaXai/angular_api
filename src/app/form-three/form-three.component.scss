@@ -1,38 +1,55 @@
 .suggestion-item {
-    // ... existing styles ...
-    background: #222;
-    border: 1px solid #fff;
-    cursor: pointer;
-    padding: 0.5rem;
+  background: #333; // Match the darker theme
+  border: none; // Remove border to match the button style
+  color: #fff; // White text for better contrast
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem; // Add space between items
 
-    a {
-      text-decoration: none;
-      color: #000;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    button {
-      // Style your button here
-      margin-left: 8px;
-      padding: 4px 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #e8e8e838;
-      }
-    }
+  &:hover {
+    background-color: #444; // Slightly lighter background on hover
   }
-  
-  .item-info {
-    // Style for the item information display area
-    margin-top: 16px;
-    border: 1px solid #ddd;
-    padding: 16px;
+
+  button {
+    background: transparent; // Match the button background with the item
+    color: #55aaff; // Use a color that stands out on the dark background
+    margin-left: 8px;
+    padding: 4px 8px;
+    border: 1px solid #55aaff; // Border color matching the text
     border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #55aaff; // Fill the button background on hover
+      color: #333; // Dark text on the light button background
+    }
   }
-  
+}
+
+.item-info {
+  background: #222; // Dark background for the info area
+  color: #fff; // White text for readability
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 2px solid #3a3a3a; // Matching colored border
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional: subtle shadow for depth
+}
+
+
+// Overriding Bootstrap button styles for consistency
+.btn-info {
+  background-color: #55aaff; // Custom color for the button
+  border-color: #55aaff; // Custom border color
+  &:hover {
+    background-color: #4499ee; // Darker variant of the button color on hover
+    border-color: #4499ee; // Border follows the hover color
+  }
+}
+
+// Optional: Add classes for buttons in the navigation to match the styling
+.nav-button {
+  background-color: #55aaff;
+  border-color: #55aaff;
+  // ... rest of your button styling ...
+}

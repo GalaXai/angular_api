@@ -1,21 +1,35 @@
-<div class="form-one-container">
+<div class="form-one-container" role="form" aria-labelledby="formOneHeading">
+    <h2 id="formOneHeading" class="visually-hidden">Player Search Form</h2>
     <div class="input-group mb-3">
-      <input type="text" class = "form-control" [(ngModel)]="username" (ngModelChange)="onInput()" placeholder="Enter username">      
-        <button
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="username"
+        (ngModelChange)="onInput()"
+        placeholder="Enter username"
+        aria-label="Username"
+        aria-required="true"
+      >
+      <button
         class="btn btn-primary"
         type="button"
-        (click)="onFetchProfiles()">Fetch Profiles</button>
+        (click)="onFetchProfiles()"
+        aria-label="Fetch Profiles"
+      >
+        Fetch Profiles
+      </button>
     </div>
   
-    <div *ngIf="errorMessage" class="alert alert-danger">
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
       {{ errorMessage }}
     </div>
   
-    <div *ngIf="isLoading">Loading...</div>
-    <div class="profile-container">
-      <div *ngFor="let profile of profiles" class="profile-card" [ngStyle]="{'background-color': getBackgroundColor(profile.cute_name)}">
+    <div *ngIf="isLoading" role="alert" aria-busy="true">Loading...</div>
+    <section class="profile-container" aria-labelledby="profileListHeading">
+      <h3 id="profileListHeading" class="visually-hidden">Profile List</h3>
+      <div *ngFor="let profile of profiles" class="profile-card" [ngStyle]="{'background-color': getBackgroundColor(profile.cute_name)}" aria-label="Profile Information Card">
         <div class="profile-image">
-          <img [src]="getImageUrl(profile.game_mode)" alt="Game Mode" style="padding: 5px;" />
+          <img [src]="getImageUrl(profile.game_mode)" alt="Game Mode" />
         </div>
         <div class="profile-stats">
           <p>Networth: {{profile.data.networth.networth | largeNumber}}</p>
@@ -31,12 +45,9 @@
              <img [src]="getImageUrl('alchemy')"class="skill-icon" alt="alchemy skill" /> {{profile.data.levels.alchemy.level}}/{{profile.data.levels.alchemy.maxLevel}}</p>
           <p><img [src]="getImageUrl('taming')" class="skill-icon" alt="taming skill" /> {{profile.data.levels.taming.level}}/{{profile.data.levels.taming.maxLevel}} |
              <img [src]="getImageUrl('farming')" class="skill-icon" alt="farming skill" /> {{profile.data.levels.farming.level}}/{{profile.data.levels.farming.maxLevel}}</p>
-          <!-- Add more stats as needed -->
         </div>
       </div>
-    </div>
-    
+    </section>
   </div>
-
-
+  
   

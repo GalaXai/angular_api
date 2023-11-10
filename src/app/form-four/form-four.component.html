@@ -1,18 +1,18 @@
-<div *ngIf="userInfo">
-    <h1>My Profile Information</h1>
+<div *ngIf="userInfo" role="region" aria-labelledby="profileInfoHeading">
+    <h1 id="profileInfoHeading">My Profile Information</h1>
     <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" id="name" [value]="userInfo.name" class="form-control" disabled>
+        <input type="text" id="name" [value]="userInfo.name" class="form-control" readonly>
     </div>
 
     <div class="form-group">
-        <label for="Surname">Surname:</label>
-        <input type="text" id="Surname" [value]="userInfo.surname" class="form-control" disabled>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" [value]="userInfo.surname" class="form-control" readonly>
     </div>
 
     <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" [value]="userInfo.email" class="form-control" disabled>
+        <input type="email" id="email" [value]="userInfo.email" class="form-control" readonly>
     </div>
 
     <!-- Add more fields as necessary -->

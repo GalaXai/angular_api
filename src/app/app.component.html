@@ -1,12 +1,30 @@
-<h1>Hypixel SkyBlock</h1>
-<p> quick information look up</p>
-<nav>
-  <ul>
-    <li><a routerLink="/form-one">Search the player</a></li>
-    <li *ngIf="isFormTwoVisible"><a routerLink="/form-two">Register An Account</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="/form-three">Get Bazzar Data</a></li>
-    <li *ngIf="isLoggedIn"><a routerLink="/form-four">My Profile</a></li>
-    <!-- Add more navigation links for additional forms here -->
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hypixel SkyBlock Player Lookup</title>
+</head>
+<body>
+  <header>
+    <h1>Hypixel SkyBlock</h1>
+    <p>Tool For Quick Player Information Look Up</p>
+  </header>
+
+  <nav aria-label="Main navigation" class="navigation">
+    <button routerLink="/form-one" class="nav-button">Search the player</button>
+    <button *ngIf="isFormTwoVisible" routerLink="/form-two" class="nav-button">Register An Account</button>
+    <button *ngIf="isLoggedIn" routerLink="/form-three" class="nav-button">Get Bazzar Data</button>
+    <button *ngIf="isLoggedIn" routerLink="/form-four" class="nav-button">My Profile</button>
+    <!-- Include other buttons for additional links as needed -->
+  </nav>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 All Basic Hypixel SkyBlock Information.</p>
+  </footer>
+
+  <script src="path-to-your-angular-app-main.js"></script> <!-- Ensure you link to your Angular app's main JS file -->
+</body>
+</html>

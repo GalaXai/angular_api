@@ -57,20 +57,21 @@ export class FormOneComponent {
       this.errorMessage = 'Please enter a username.';
       return;
     }
-
+  
     this.isLoading = true;
     this.profileService.getProfile(this.username).subscribe({
       next: (response) => {
         this.profiles = Object.values(response.profiles);
+        this.errorMessage = ''; // Clear the error message on success
         this.isLoading = false;
-        console.log(this.profiles);
       },
       error: (error) => {
-        this.errorMessage = 'Failed to load profiles.';
+        this.errorMessage = 'Failed to load profiles.'; // Set the error message on error
         this.isLoading = false;
       }
     });
   }
+  
 
   getProfile(playerName: string) {
     this.profileService.getProfile(playerName).subscribe(

@@ -1,45 +1,52 @@
-<!-- Conditionally display the form based on isFormTwoVisible$ -->
-<div *ngIf="isFormTwoVisible">
-  <form [formGroup]="accountCreationForm" (ngSubmit)="onSubmit()" class="form-style">
+<div *ngIf="isFormTwoVisible" role="region" aria-labelledby="registrationFormHeading">
+  <h2 id="registrationFormHeading" class="visually-hidden">Registration Form</h2>
+  <form [formGroup]="accountCreationForm" (ngSubmit)="onSubmit()" class="form-style" novalidate>
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" id="name" formControlName="name" placeholder="Enter your name" class="form-control">
+      <input type="text" id="name" formControlName="name" placeholder="Enter your name" class="form-control" aria-describedby="nameHelp" required>
+      <small id="nameHelp" class="form-text text-muted visually-hidden">Please enter your name.</small>
     </div>
-  
+
     <div class="form-group">
       <label for="surname">Surname:</label>
-      <input type="text" id="surname" formControlName="surname" placeholder="Enter your surname" class="form-control">
+      <input type="text" id="surname" formControlName="surname" placeholder="Enter your surname" class="form-control" aria-describedby="surnameHelp" required>
+      <small id="surnameHelp" class="form-text text-muted visually-hidden">Please enter your surname.</small>
     </div>
-  
+
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="form-control">
-    </div>  
+      <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="form-control" aria-describedby="emailHelp" required>
+      <small id="emailHelp" class="form-text text-muted visually-hidden">Please enter your email address.</small>
+    </div>
+
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" placeholder="Enter your password" class="form-control">
+      <input type="password" id="password" formControlName="password" placeholder="Enter your password" class="form-control" aria-describedby="passwordHelp" required>
+      <small id="passwordHelp" class="form-text text-muted visually-hidden">Please enter a password.</small>
     </div>
-  
+
     <div class="form-group">
       <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" class="form-control">
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm your password" class="form-control" aria-describedby="confirmPasswordHelp" required>
+      <small id="confirmPasswordHelp" class="form-text text-muted visually-hidden">Please confirm your password.</small>
     </div>
 
     <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="agreeToTerms" formControlName="agreeToTerms">
+      <input type="checkbox" class="form-check-input" id="agreeToTerms" formControlName="agreeToTerms" aria-describedby="termsHelp" required>
       <label class="form-check-label" for="agreeToTerms">
-        I agree to the <a href="https://www.lipsum.com/">terms and conditions</a>
+        I agree to the <a href="https://www.lipsum.com/" target="_blank" rel="noopener">terms and conditions</a>
       </label>
+      <small id="termsHelp" class="form-text text-muted visually-hidden">You must agree to the terms and conditions to register.</small>
     </div>
 
-    <div *ngIf="accountCreationForm.get('agreeToTerms')?.touched && accountCreationForm.get('agreeToTerms')?.hasError('required')">
-      <small class="text-danger">You must agree to the terms and conditions.</small>
+    <div *ngIf="accountCreationForm.get('agreeToTerms')?.touched && accountCreationForm.get('agreeToTerms')?.hasError('required')" class="alert alert-danger" role="alert">
+      <small>You must agree to the terms and conditions.</small>
     </div>
-  
-    <div *ngIf="accountCreationForm.errors?.['mismatch']" class="alert alert-warning">
+
+    <div *ngIf="accountCreationForm.errors?.['mismatch']" class="alert alert-warning" role="alert">
       Passwords must match.
     </div>
-    
+
     <button type="submit" [disabled]="!accountCreationForm.valid" class="btn btn-primary">Create Account</button>
   </form>
 </div>

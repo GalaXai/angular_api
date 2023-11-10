@@ -1,28 +1,22 @@
-<div *ngIf="isVisible">
-<div>
+<div *ngIf="isVisible" role="search">
   <input type="text"
     [(ngModel)]="searchQuery"
     (ngModelChange)="onSearchChange($event)"
     placeholder="Search for an item"
-    class="form-control">
+    class="form-control"
+    aria-label="Search for an item">
   
-  <!-- Autocomplete suggestions with 'Info' button for each item -->
-  <div *ngFor="let itemName of filteredItemNames" class="suggestion-item">
-    {{ itemName }}
-    <button (click)="displayItemInfo(itemName)" class="btn btn-info">Info</button>
-  </div>
+    <div *ngFor="let itemName of filteredItemNames" class="suggestion-item" role="list">
+      <div role="listitem">
+        {{ itemName }}
+        <button (click)="displayItemInfo(itemName)" class="btn btn-info">Info</button>
+      </div>
+    </div>
+    
 </div>
 
-<!-- Area to display selected item information -->
-<div *ngIf="selectedItem" class="item-info">
-  <h3>{{ selectedItem.name }}</h3>
-  <p>Buy Price: {{ selectedItem.buyPrice | largeNumber }} coins</p>
-  <p>Sell Price: {{ selectedItem.sellPrice | largeNumber }} coins</p>
-  <!-- Display other details as needed -->
-</div>
-
-<!-- Debug Alert Button -->
-<!-- <button (click)="triggerDebugAlert()" class="btn btn-secondary">Debug Alert</button> -->
-
-</div>
-
+<section *ngIf="selectedItem" class="item-info" aria-labelledby="itemInfoHeader">
+  <h3 id="itemInfoHeader">{{ selectedItem.name }}</h3>
+  <p>Buy Price: <span aria-label="Buy Price">{{ selectedItem.buyPrice | largeNumber }} coins</span></p>
+  <p>Sell Price: <span aria-label="Sell Price">{{ selectedItem.sellPrice | largeNumber }} coins</span></p>
+</section>
