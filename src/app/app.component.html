@@ -4,8 +4,8 @@
 <nav>
   <ul>
     <li><a routerLink="/form-one">Go to Form One</a></li>
-    <li><a routerLink="/form-two">Go to Form Two</a></li>
-    <li><a routerLink="/form-three">Go to Form Three</a></li>
+    <li *ngIf="isFormTwoVisible"><a routerLink="/form-two">Go to Form Two</a></li>
+    <li *ngIf="isLoggedIn"><a routerLink="/form-three">Go to Form Three</a></li>
     <!-- Add more navigation links for additional forms here -->
   </ul>
 </nav>

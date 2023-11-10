@@ -39,11 +39,6 @@ export class FormOneComponent {
     });
   }
 
-
-  ngOnInit() {
-    this.getProfile('somePlayerName'); // Call this with actual player name
-  }
-
   getProfile(playerName: string) {
     this.profileService.getProfile(playerName).subscribe(
       data => {

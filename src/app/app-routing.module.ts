@@ -5,7 +5,7 @@ import { FormTwoComponent } from './form-two/form-two.component';
 import { FormThreeComponent } from './form-three/form-three.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main-page', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: 'form-one', component: FormOneComponent },
   { path: 'form-two', component: FormTwoComponent },
   { path: 'form-three', component: FormThreeComponent },
