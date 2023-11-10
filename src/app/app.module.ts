@@ -9,6 +9,7 @@ import { FormOneComponent } from './form-one/form-one.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileService } from './services/profile.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LargeNumberPipe } from './shared/pipes/large-number.pipe';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormTwoComponent,
     FormThreeComponent,
     FormOneComponent,
+    LargeNumberPipe,
   ],
   imports: [
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]  

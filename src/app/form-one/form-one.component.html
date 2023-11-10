@@ -17,15 +17,31 @@
     </div>
   
     <div *ngIf="isLoading">Loading...</div>
-  
-    <div *ngFor="let profile of profiles">
-        <div [ngStyle]="{'background-color': getBackgroundColor(profile.cute_name)}">
-          <!-- Display the game mode as an image with a maximum size -->
-          <p><img [src]="getImageUrl(profile.game_mode)" [style.max-height.px]="28" [style.max-width.px]="28" alt="{{ profile.game_mode }}" /> {{profile.game_mode}} profile</p>
-          <p>Coins: {{ profile.data.purse | number }}</p>
-          <p>Skill Average: {{ profile.data.average_level | number:'1.2-2' }}</p>
-          <!-- Add more details as needed -->
+    <div class="profile-container">
+      <div *ngFor="let profile of profiles" class="profile-card" [ngStyle]="{'background-color': getBackgroundColor(profile.cute_name)}">
+        <div class="profile-image">
+          <img [src]="getImageUrl(profile.game_mode)" alt="Game Mode" />
         </div>
-    </div>      
+        <div class="profile-stats">
+          <p>Networth: {{profile.data.networth.networth | largeNumber}}</p>
+          <p>Coins: {{ profile.data.networth.purse + profile.data.networth.bank | largeNumber }}</p>
+          <p>Skill Average: {{ profile.data.average_level | number:'1.2-2' }}</p>
+          <p><img [src]="getImageUrl('skyblock_level')" class="skill-icon" alt="skyblock level" /> {{profile.data.skyblock_level.level}}/{{profile.data.skyblock_level.maxLevel}} | 
+            <img [src]="getImageUrl('dungeons')" class="skill-icon" alt="dungeons skill" /> {{profile.data.dungeons.catacombs.level.level}}/{{profile.data.dungeons.catacombs.level.maxLevel}}</p>
+          <p><img [src]="getImageUrl('combat')" class="skill-icon" alt="combat skill" /> {{profile.data.levels.combat.level}}/{{profile.data.levels.combat.maxLevel}} |
+            <img [src]="getImageUrl('mining')" class="skill-icon" alt="mining skill" /> {{profile.data.levels.mining.level}}/{{profile.data.levels.mining.maxLevel}}</p>
+          <p><img [src]="getImageUrl('foraging')" class="skill-icon" alt="foraging skill" /> {{profile.data.levels.foraging.level}}/{{profile.data.levels.foraging.maxLevel}} | 
+            <img [src]="getImageUrl('fishing')" class="skill-icon" alt="fishing skill" /> {{profile.data.levels.fishing.level}}/{{profile.data.levels.fishing.maxLevel}}</p>
+          <p><img [src]="getImageUrl('enchanting')"class="skill-icon" alt="enchanting skill" /> {{profile.data.levels.enchanting.level}}/{{profile.data.levels.enchanting.maxLevel}} |
+             <img [src]="getImageUrl('alchemy')"class="skill-icon" alt="alchemy skill" /> {{profile.data.levels.alchemy.level}}/{{profile.data.levels.alchemy.maxLevel}}</p>
+          <p><img [src]="getImageUrl('taming')" class="skill-icon" alt="taming skill" /> {{profile.data.levels.taming.level}}/{{profile.data.levels.taming.maxLevel}} |
+             <img [src]="getImageUrl('farming')" class="skill-icon" alt="farming skill" /> {{profile.data.levels.farming.level}}/{{profile.data.levels.farming.maxLevel}}</p>
+          <!-- Add more stats as needed -->
+        </div>
+      </div>
+    </div>
+    
   </div>
+
+
   
