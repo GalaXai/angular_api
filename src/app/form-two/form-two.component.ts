@@ -49,6 +49,7 @@ export class FormTwoComponent implements OnInit{
       sessionStorage.setItem('accountData', formDataJson);
       
       this.sharedService.setLoggedIn(true);
+      this.sharedService.setUserInfo(this.accountCreationForm.value);
       console.log('Form Submitted and data stored in session storage', this.accountCreationForm.value);
       // Further processing like sending data to server
     }

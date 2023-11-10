@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BazaarService } from '../services/bazaar.service';
 import { SharedService } from '../shared.service';
+import { FormDataService } from '../shared/form-data.service';
+
+
 @Component({
   selector: 'app-form-three',
   templateUrl: './form-three.component.html',
@@ -15,34 +18,56 @@ export class FormThreeComponent implements OnInit {
   isVisible: boolean = false;
   selectedItem: any = null;
 
-  constructor(private bazaarService: BazaarService,
-    private sharedService: SharedService) {}
+  constructor(
+    private bazaarService: BazaarService,
+    private sharedService: SharedService,
+    private formDataService: FormDataService,) {}
 
-  ngOnInit(): void {
-    this.sharedService.isLoggedIn$.subscribe(loggedIn => {
-      this.isVisible = loggedIn;
-    });
-    this.bazaarService.fetchBazaarData().subscribe(
-      data => {
-        this.bazaarService.storeBazaarData(data);
-        this.items = data;
-        this.itemNames = Object.keys(this.items).map(key => this.items[key].name);
-      },
-      error => {
-        console.error('Error fetching Bazaar data', error);
-      }
-    );
+    ngOnInit(): void {
+      this.sharedService.isLoggedIn$.subscribe(loggedIn => {
+        this.isVisible = loggedIn;
+      });
+      this.bazaarService.fetchBazaarData().subscribe(
+        data => {
+          this.bazaarService.storeBazaarData(data);
+          this.items = data;
+          this.itemNames = Object.keys(this.items).map(key => this.items[key].name);
+          
+          // Retrieve the saved search query when initializing the component
+          this.searchQuery = this.formDataService.getFormThreeSearchQuery();
+          
+          // If there's a saved search query, restore the search results and the selected item
+          if (this.searchQuery) {
+            this.onSearchChange(this.searchQuery);  // This should repopulate filteredItemNames
+            
+            // Attempt to restore the selectedItem if there was one
+            const itemKey = Object.keys(this.items).find(
+              key => this.items[key].name.toLowerCase() === this.searchQuery.toLowerCase()
+            );
+            if (itemKey) {
+              this.selectedItem = this.items[itemKey];
+            }
+          }
+        },
+        error => {
+          console.error('Error fetching Bazaar data', error);
+        }
+      );
+    }
+    
+
+  performSearch(query: string): void {
+    // Logic to perform the search and filter items
+    // This would involve setting your filteredItemNames or however you're handling the display of search results
+    this.filteredItemNames = this.itemNames.filter(name =>
+      name.toLowerCase().includes(query.toLowerCase())
+    ).slice(0, 10); // Limit the results to 10 as previously mentioned
   }
 
   onSearchChange(searchValue: string): void {
     this.searchQuery = searchValue;
-    if (searchValue) {
-      this.filteredItemNames = this.itemNames
-        .filter(name => name.toLowerCase().includes(searchValue.toLowerCase()))
-        .slice(0, 10); // Only take the first 10 results
-    } else {
-      this.filteredItemNames = [];
-    }
+    this.performSearch(this.searchQuery);
+    this.formDataService.saveFormThreeSearchQuery(this.searchQuery);
   }
   
   displayItemInfo(itemName: string): void {

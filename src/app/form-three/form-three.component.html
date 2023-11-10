@@ -1,10 +1,10 @@
 <div *ngIf="isVisible">
 <div>
   <input type="text"
-         [(ngModel)]="searchQuery"
-         (input)="onSearchChange(searchQuery)"
-         placeholder="Search for an item"
-         class="form-control">
+    [(ngModel)]="searchQuery"
+    (ngModelChange)="onSearchChange($event)"
+    placeholder="Search for an item"
+    class="form-control">
   
   <!-- Autocomplete suggestions with 'Info' button for each item -->
   <div *ngFor="let itemName of filteredItemNames" class="suggestion-item">
@@ -25,3 +25,4 @@
 <!-- <button (click)="triggerDebugAlert()" class="btn btn-secondary">Debug Alert</button> -->
 
 </div>
+

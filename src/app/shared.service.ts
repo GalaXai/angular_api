@@ -8,6 +8,16 @@ export class SharedService {
   private isLoggedIn = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedIn.asObservable();
 
+  private userInfo: any;
+  
+  setUserInfo(data: any) {
+    this.userInfo = data;
+  }
+  
+  getUserInfo() {
+    return this.userInfo;
+  }
+
   private isFormTwoVisible = new BehaviorSubject<boolean>(true);
   isFormTwoVisible$ = this.isFormTwoVisible.asObservable();
 

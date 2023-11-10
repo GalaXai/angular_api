@@ -1,12 +1,7 @@
 <div class="form-one-container">
     <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter username"
-        [(ngModel)]="username"
-        name="username">
-      <button
+      <input type="text" class = "form-control" [(ngModel)]="username" (ngModelChange)="onInput()" placeholder="Enter username">      
+        <button
         class="btn btn-primary"
         type="button"
         (click)="onFetchProfiles()">Fetch Profiles</button>

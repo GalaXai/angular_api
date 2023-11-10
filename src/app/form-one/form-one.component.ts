@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProfileService } from '../services/profile.service';
+import { FormDataService } from '../shared/form-data.service';
 
 @Component({
   selector: 'app-form-one',
@@ -36,8 +37,21 @@ export class FormOneComponent {
   };
 
 
-  constructor(private profileService: ProfileService) {}
+  constructor(private profileService: ProfileService,
+    private formDataService: FormDataService) {}
+  
+  ngOnInit(): void {
+    // Retrieve the saved username when initializing the component
+    this.username = this.formDataService.getUsername();
+    if (this.username !== '') {
+      this.onFetchProfiles();
+    }
+  }    
 
+  onInput(): void {
+    // Call this method whenever the input changes
+    this.formDataService.saveUsername(this.username);
+  }
   onFetchProfiles(): void {
     if (!this.username) {
       this.errorMessage = 'Please enter a username.';

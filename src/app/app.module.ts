@@ -10,7 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileService } from './services/profile.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LargeNumberPipe } from './shared/pipes/large-number.pipe';
-
+import { FormDataService } from './shared/form-data.service';
+import { FormFourComponent } from './form-four/form-four.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LargeNumberPipe } from './shared/pipes/large-number.pipe';
     FormThreeComponent,
     FormOneComponent,
     LargeNumberPipe,
+    FormFourComponent,
   ],
   imports: [
     FormsModule, // <-- import the FormsModule before binding with [(ngModel)]  
@@ -27,7 +29,7 @@ import { LargeNumberPipe } from './shared/pipes/large-number.pipe';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [ProfileService],
+  providers: [ProfileService,FormDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
