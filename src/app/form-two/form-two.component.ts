@@ -9,9 +9,11 @@ import { SharedService } from '../shared.service';
 })
 export class FormTwoComponent implements OnInit{
   accountCreationForm!: FormGroup;
-
+  
   isFormTwoVisible: boolean = true;
   
+
+
   constructor(
     private fb: FormBuilder,
     private sharedService: SharedService) {}
@@ -24,19 +26,18 @@ export class FormTwoComponent implements OnInit{
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      confirmEmail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      agreeToTerms: [false, Validators.requiredTrue] // Ensures the checkbox must be checked
     }, { validator: this.passwordMatchValidator });
   }
 
   passwordMatchValidator(formGroup: FormGroup): { [key: string]: any } | null {
     const password = formGroup.get('password')!.value;
     const confirmPassword = formGroup.get('confirmPassword')!.value;
-    const email = formGroup.get('email')!.value;
-    const confirmEmail = formGroup.get('confirmEmail')!.value;
 
-    return (password === confirmPassword && email === confirmEmail) ? null : { mismatch: true };
+
+    return (password === confirmPassword) ? null : { mismatch: true };
   }
 
   onSubmit() {

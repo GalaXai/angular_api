@@ -13,7 +13,7 @@ export class LargeNumberPipe implements PipeTransform {
     } else if (value >= 1e3) {
       return (value / 1e3).toFixed(2) + 'K'; // For thousands
     } else {
-      return value; // For anything less than a thousand
+      return value.toFixed(2); // For anything less than a thousand
     }
   }
 }

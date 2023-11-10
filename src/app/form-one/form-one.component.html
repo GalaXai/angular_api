@@ -20,7 +20,7 @@
     <div class="profile-container">
       <div *ngFor="let profile of profiles" class="profile-card" [ngStyle]="{'background-color': getBackgroundColor(profile.cute_name)}">
         <div class="profile-image">
-          <img [src]="getImageUrl(profile.game_mode)" alt="Game Mode" />
+          <img [src]="getImageUrl(profile.game_mode)" alt="Game Mode" style="padding: 5px;" />
         </div>
         <div class="profile-stats">
           <p>Networth: {{profile.data.networth.networth | largeNumber}}</p>

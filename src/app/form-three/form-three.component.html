@@ -16,8 +16,8 @@
 <!-- Area to display selected item information -->
 <div *ngIf="selectedItem" class="item-info">
   <h3>{{ selectedItem.name }}</h3>
-  <p>Buy Price: {{ selectedItem.buyPrice | currency }}</p>
-  <p>Sell Price: {{ selectedItem.sellPrice | currency }}</p>
+  <p>Buy Price: {{ selectedItem.buyPrice | largeNumber }} coins</p>
+  <p>Sell Price: {{ selectedItem.sellPrice | largeNumber }} coins</p>
   <!-- Display other details as needed -->
 </div>
 

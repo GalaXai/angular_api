@@ -14,19 +14,19 @@ export class FormOneComponent {
   cuteNameColors: { [key: string]: string } = {
     Tomato: '#FF6347',
     Pear: '#C9CC3F',
-    Lime: '#32CD32',
+    Lime: '#00b894',
     Apple: '#FF0000', // Red
     Banana: '#FFFF00', // Yellow
     Blueberry: '#4F86F7', // Blue
-    Coconut: '#FFFFFF', // White
+    Coconut: '#b2bec3', // White
     Cucumber: '#76D7C4', // Green
     Grapes: '#6F2DA8', // Purple
-    Kiwi: '#8EE53F', // Light Green
+    Kiwi: '#00b894', // Light Green
     Lemon: '#FFF44F', // Light Yellow
     Mango: '#FFD700', // Gold
     Orange: '#FFA500', // Orange
     Papaya: '#FF4500', // Orange-Red
-    Peach: '#FFE5B4', // Peach
+    Peach: '#fab1a0', // Peach
     Pineapple: '#867530', // Brown
     Pomegranate: '#8B0000', // Dark Red
     Raspberry: '#E30B5D', // Raspberry
